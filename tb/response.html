@@ -1,0 +1,39 @@
+<!-- 用户反馈页 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+	<title>Document</title>
+	<link rel="stylesheet" href="TB.css" />
+</head>
+<body>
+	<div class="reg_head back_click">
+		<div class="back" @click="back()">返回</div>
+		<span class="reg_tit">用户反馈</span>
+	</div>
+	<div class="reponse_blank"></div>
+	<div class="response">
+		<form action="TB.html" method="get">
+			<div>
+				<span class="response_tit">手机类型</span>
+				<input type="text" class="response_form" />	
+			</div>
+			<div class="response_moduel">
+				<span class="response_tit">网络信号</span>
+				<select class="select_form">
+					<option value="" class="select_tit">请选择</option>
+					<option value="" class="select_tit">移动4G</option>
+					<option value="" class="select_tit">联通4G</option>
+					<option value="" class="select_tit">联通2/3G</option>
+				</select>
+			</div>
+		</form>
+		<input type="text" class="blank_moduel" v-model='text' @keyup="change()"/>
+		<button class="submit" :style="{backgroundColor:activeColor}" @click="submit($event)">发表</button>
+		<div class="login_fal" v-show="show_response" v-cloak>提交成功，稍后返回首页</div>
+	</div>
+	<script src="vue.js"></script>
+	<script src="TB.js"></script>
+</body>
+</html>

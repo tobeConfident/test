@@ -1,0 +1,62 @@
+<!-- 购物车页面 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+	<title>购物车</title>
+	<link rel="stylesheet" href="TB.css" />
+</head>
+<body>
+	<div class="shopping_moduel">
+		<header class="shopping_header">购物车</header>
+		<div class="shopping_goods" v-for="value in item">
+			<header>店铺名称</header>
+			<hr>
+			<div class="shopping_goods_moduel">
+				<img src="goods_pics/02.gif" class="shopping_goods_pic">
+				<span class="goods1 goods_name">{{value.name}}</span>
+				<span class="goods1 goods_size">{{value.size}}</span>
+				<span class="goods1 goods_price1">{{value.price}}</span>
+			</div>
+			<div class="btn_common btn_cutdown" @click="btn_cut()">－</div>
+			<div class="btn_common btn_cou">{{value.count}}</div>
+			<div class="btn_common btn_add" @click="btn_add()">＋</div>
+		</div>
+		<div class="shopping_count">合计:{{pay}}￥</div>
+		<div class="shopping_pay" @click="pay1()">支付</div>
+		<div class="black" v-show = "pay_nav" v-cloak></div>
+		<div class="pay_nav" v-show = "pay_nav" v-cloak>
+			<span class="pay_nav_tit">您需要支付{{pay}}元，确认么？</span>
+			<button class="pay_sure_btn" @click="certain()">确认</button>
+			<button class="pay_sure_btn pay_sure_btn1" @click="cancle()">取消</button>
+		</div>
+		<div class="certain" v-show = "cert" v-cloak>支付成功</div>
+	</div>
+	<!-- 底部导航栏 -->
+	<div class="master">
+		<div class="master_common home" @click="home()">
+			<img src="fl_images/sy.png" class="master_icon home_icon"/>
+			<span class="master_font">首页</span>
+		</div>
+		<div class="master_common logistics">
+			<img src="fl_images/wl.gif" class="master_icon logistics_icon"/>
+			<span class="master_font">物流</span>
+		</div>
+		<div class="master_common buy" @click="buy()">
+			<img src="fl_images/gw.gif" class="master_icon buy_icon"/>
+			<span class="master_font">购物车</span>
+		</div>
+		<div class="master_common my_tb">
+			<img src="fl_images/wd.gif" class="master_icon my_tb_icon"/>
+			<span class="master_font">我的淘宝</span>
+		</div>
+		<div class="master_common more">
+			<img src="fl_images/gd.png" class="master_icon more_icon"/>
+			<span class="master_font more_font">更多</span>
+		</div>
+	</div>
+	<script src="vue.js"></script>
+	<script src="TB.js"></script>
+</body>
+</html>

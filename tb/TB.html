@@ -1,0 +1,346 @@
+<!-- 淘宝首页 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+	<title>淘宝网-淘！我喜欢</title>
+	<link rel="stylesheet" href="TB.css">
+	<link rel="stylesheet" href="animate.css-master/animate.min.css">
+</head>
+<body>
+	<!-- 顶部搜索框 -->
+	<div class="tb_top" v-show="isFixed">
+		<div class="tb_top_icon">
+			<img :src="url" class="tb_icon">
+		</div>
+		<div class="m_search" @click="go_page()">
+			<img :src="url1" class="pic_search" /> 寻找宝贝店铺
+		</div>
+	</div>
+	<!-- 轮播图模块 -->
+	<div class="slider">
+		<img :src="img">
+            <ul class="image">
+				<li v-for="(item,index) in imgarr"></li>
+			</ul>
+			<ul id="wrap">
+				<li :style='{color:activeColor}'></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+	</div>
+	<!-- 快速进入分类模块 -->
+	<div class="classify_moduel">
+		<div class="classify_moduel_top">
+			<div class="top_moduel">
+				<img src="fl_images/tm.png" class="common_icon tm_icon">
+				<span class="common_font">天猫</span>
+			</div>
+			<div class="top_moduel">
+				<img src="fl_images/hs.gif" class="common_icon">
+				<span class="common_font">聚划算</span>
+			</div>
+			<div class="top_moduel">
+				<img src="fl_images/jk.gif" class="common_icon">
+				<span class="common_font">天猫国际</span>
+			</div>
+			<div class="top_moduel">
+				<img src="fl_images/wm.png" class="common_icon">
+				<span class="common_font">外卖</span>
+			</div>
+			<div class="top_moduel">
+				<img src="fl_images/cs.png" class="common_icon special_icon">
+				<span class="common_font">天猫超市</span>
+			</div>
+		</div>
+		<!-- 快速进入分类模块下半部分 -->
+		<div class="classify_moduel_bottom">
+			<div class="bottom_moduel">
+				<img src="fl_images/cz.png" class="common_icon cz_icon">
+				<span class="common_font">充值中心</span>
+			</div>
+			<div class="bottom_moduel">
+				<img src="fl_images/fz.png" class="common_icon">
+				<span class="common_font">飞猪旅行</span>
+			</div>
+			<div class="bottom_moduel">
+				<img src="fl_images/jb.png" class="common_icon">
+				<span class="common_font">领金币</span>
+			</div>
+			<div class="bottom_moduel">
+				<img src="fl_images/pm.gif" class="common_icon">
+				<span class="common_font">拍卖</span>
+			</div>
+			<div class="bottom_moduel">
+				<img src="fl_images/fl.gif" class="common_icon special_icon">
+				<span class="common_font">分类</span>
+			</div>
+		</div>
+	</div>
+	<!-- 淘宝头条模块 -->
+	<div class="tb_headline">
+		<div class="tb_headline_icon"></div>
+		<div class="headline_tit">
+			<div class="headline_tit_top">
+				<span class="headline_tit_icon">美食</span>
+				<span class="headline_tit_news">养多肉，从中思考出了人生的真谛！</span>
+			</div>
+			<div class="headline_tit_bottom">
+				<span class="headline_tit_icon">动漫</span>
+				<span class="headline_tit_news">奥特曼的技能之一，防御罩</span>
+			</div>
+		</div>
+		<div class="tb_headline_pic"></div>
+	</div>
+	<!-- 分割线 -->
+	<div class="gray_moduel"></div>
+	<!-- 淘抢购模块 -->
+	<div class="tb_goods">
+		<div class="tb_goods_top">
+			<div class="tb_goods_top1 tb_goods_tops1">
+				<span class="tb_goods_tit">淘抢购</span>
+				<img src="goods_pics/444.gif" class="tb_goods_pic1" />
+				<img src="goods_pics/111.png" class="tb_goods_pic2" />
+			</div>
+			<div class="tb_goods_top1 tb_goods_tops2">
+				<span class="tb_goods_tit tb_goods_tit1">有好货</span>
+				<span class="tb_goods_stit">高颜值美物</span>
+				<img src="goods_pics/444.gif" class="tb_goods_pic1"/>
+				<img src="goods_pics/111.png" class="tb_goods_pic2" />
+			</div>
+		</div>
+		<div class="tb_goods_bottom">
+			<div class="tb_goods_bottom1 tb_goods_bottoms1">
+				<span class="tb_goods_tit tb_goods_tit2">爱逛街</span>
+				<span class="tb_goods_stit">新品100款</span>
+				<img src="goods_pics/444.gif" class="tb_goods_pic1" />
+				<img src="goods_pics/111.png" class="tb_goods_pic2" />
+			</div>
+			<div class="tb_goods_bottom1 tb_goods_bottoms2">
+				<span class="tb_goods_tit tb_goods_tit3">必买清单</span>
+				<span class="tb_goods_stit">什么值得买</span>
+				<img src="goods_pics/444.gif" class="tb_goods_pic1" />
+				<img src="goods_pics/111.png" class="tb_goods_pic2" />
+			</div>
+		</div>
+	</div>
+	<!-- 分割线 -->
+	<div class="gray_moduel1"></div>
+	<!-- 淘宝直播模块 -->
+	<div class="tb_live">
+		<div class="tb_live_icon">淘宝直播</div>
+		<div class="tb_live_top">
+			<img src="goods_pics/hz.png" class="tb_live_pic" />
+			<img src="goods_pics/ss.png" class="tb_live_pic1" />
+		</div>
+		<div class="tb_live_bottom">
+			<img src="goods_pics/lll.gif" class="tb_live_common" />
+			<img src="goods_pics/lll.gif" class="tb_live_common" />
+			<img src="goods_pics/lll.gif" class="tb_live_common" />
+		</div>
+		<div class="tb_live_discr">
+			<div class="tb_live_disc">
+				<span class="live_disc_top">乐家生活</span>
+				<span class="live_disc_bottom">快乐生活</span>
+			</div>
+			<div class="tb_live_disc">
+				<span class="live_disc_top">乐家生活</span>
+				<span class="live_disc_bottom">快乐生活</span>
+			</div>
+			<div class="tb_live_disc">
+				<span class="live_disc_top">乐家生活</span>
+				<span class="live_disc_bottom">快乐生活</span>
+			</div>
+		</div>
+	</div>
+	<!-- 分割线 -->
+	<div class="gray_moduel1"></div>
+	<!-- 买遍全球模块 -->
+	<div class="tb_world ">
+		<div class="tb_live_icon tb_world_icon">买遍全球</div>
+		<div class="tb_live_top">
+			<img src="goods_pics/hz.png" class="tb_live_pic" />
+			<img src="goods_pics/ss.png" class="tb_live_pic1" />
+		</div>
+		<div class="tb_world_goods">
+			<div class="tb_world_goods_top">
+				<div class="tb_world_common">
+					<span class="tb_world_goods_tit">进口优选</span>
+					<span class="tb_world_goods_tit1">正品保障15天售后无忧</span>
+					<img src="goods_pics/bag.gif" class="tb_world_goods_left" />
+					<img src="goods_pics/bag.gif" class="tb_world_goods_left" />
+				</div>
+				<div class="tb_world_common">
+					<span class="tb_world_goods_tit2">全球品牌动态</span>
+					<span class="tb_world_goods_tit1">3186个品牌资讯和上新</span>
+					<img src="goods_pics/bag.gif" class="tb_world_goods_left" />
+					<img src="goods_pics/bag.gif" class="tb_world_goods_left" />
+				</div>
+			</div>
+			<div class="tb_world_goods_bottom">
+				<div class="tb_world_common">
+					<span class="tb_world_goods_tit2">海外买手现场</span>
+					<span class="tb_world_goods_tit1">8253人海外实时扫货中</span>
+					<img src="goods_pics/bag.gif" class="tb_world_goods_left" />
+					<img src="goods_pics/bag.gif" class="tb_world_goods_left" />
+				</div>
+				<div class="tb_world_common">
+					<span class="tb_world_goods_tit2">海淘笔记</span>
+					<span class="tb_world_goods_tit1">百万口碑好货真实评测</span>
+					<img src="goods_pics/bag.gif" class="tb_world_goods_left" />
+					<img src="goods_pics/bag.gif" class="tb_world_goods_left" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 分割线 -->
+	<div class="gray_moduel1"></div>
+	<!-- 猜你喜欢模块 -->
+	<div class="love_pics_module">
+		<div class="loveicon_module">
+			—— <img :src="url1" class="pic_search" /> 猜你喜欢 ——
+		</div>
+		<div class="love_pics">
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+		</div>
+		<!-- 分割线 -->
+	<div class="gray_moduel2" @click="ne()" v-show="see" v-cloak>{{msg}}</div>
+		<div class="love_pics" v-show="saw" v-cloak>
+			<div class="love_goods" @click="goods()">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+			<div class="love_goods">
+				<img src="goods_pics/02.gif" class="love_pics1"/>
+				<div class="love_goods_disc">
+					<span class="goods_tit">[为你推荐]查米真丝 专利技术 蚕丝割绒</span>
+					<span class="goods_price">￥45</span>
+					<span class="goods_peo">14人付款</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 底部导航栏上方模块 -->
+	<div class="bottom_nav">
+		<div class="tit_nav_com">
+			<div class="tit_nav" v-for="(item,index) in json"@click="btn($event)" v-cloak>{{item}}</div>
+		</div>
+		<span class="bottom_tit">2018 浙B2-20080224 服务中心</span>
+	</div>
+	<!-- 底部导航栏 -->
+	<div class="master">
+		<div class="master_common home" @click="home()">
+			<img src="fl_images/sy.png" class="master_icon home_icon"/>
+			<span class="master_font">首页</span>
+		</div>
+		<div class="master_common logistics">
+			<img src="fl_images/wl.gif" class="master_icon logistics_icon"/>
+			<span class="master_font">物流</span>
+		</div>
+		<div class="master_common buy" @click="buy()">
+			<img src="fl_images/gw.gif" class="master_icon buy_icon"/>
+			<span class="master_font">购物车</span>
+		</div>
+		<div class="master_common my_tb">
+			<img src="fl_images/wd.gif" class="master_icon my_tb_icon"/>
+			<span class="master_font">我的淘宝</span>
+		</div>
+		<div class="master_common more">
+			<img src="fl_images/gd.png" class="master_icon more_icon"/>
+			<span class="master_font more_font">更多</span>
+		</div>
+	</div>
+
+	<!-- 引入js文件 -->		
+	<script src="vue.js"></script>
+	<script src="TB.js"></script>
+	
+</body>
+</html>

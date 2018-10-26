@@ -1,0 +1,115 @@
+<!-- 商品详情页 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+	<title>Document</title>
+	<link rel="stylesheet" href="TB.css">
+</head>
+<body>
+	<div class="goods_particulars">
+		<div class="goods_picture">
+			<span class="goods_particulars_icon" @click="back()">&#60</span>
+			<span class="goods_particulars_icon" @click="add_shopping()">&#58883</span>
+			<img src="goods_pics/02.gif" class="goods_picture_pic" />
+		</div>
+		<div class="goods_detail">
+			<span class="goods_detail_tit">
+				查米真丝 专利技术 蚕丝割绒 真丝华夫格美容毛巾
+			</span>	
+		</div>
+		<div class="goods_detail1">
+			<span class="goods_detail_tit1" v-cloak>￥{{price}}</span>
+			<span class="goods_detail_tit1">淘金币抵2%</span>
+		</div>
+		<div class="goods_detail2" v-cloak> 
+			<span class="goods_detail_tit2" v-cloak>快递:{{price1}}.00</span>
+			<span class="goods_detail_tit2" v-cloak>月销{{amount}}笔</span>
+			<span class="goods_detail_tit2">浙江嘉兴</span>
+		</div>
+		<div class="goods_detail3"> 
+			<span class="goods_detail_tit3"><i class="goods_detail3_icon">&#58885</i>订单险</span>
+			<span class="goods_detail_tit3"><i class="goods_detail3_icon">&#58885</i>7天无理由</span>
+			<span class="goods_detail_tit3"><i class="goods_detail3_icon">&#58885</i>运费险</span>
+			<span class="goods_detail_tit3"><i class="goods_detail3_icon">&#58885</i>公益宝贝</span>
+		</div>
+		<!-- 分割线 -->
+		<div class="gray_moduel1 gray_moduel5"></div>
+		<div class="choose_goods">请选择 尺寸 颜色分类</div>
+		<!-- 分割线 -->
+		<div class="gray_moduel1 gray_moduel5"></div>
+		<!-- 宝贝评价 -->
+		<div class="goods_judge">
+			<span class="goods_judge_tit">宝贝评价(20)</span>
+			<div class="goods_judge_user">
+				<img src="fl_images/tx.gif" />
+				<span class="goods_judge_tit goods_judge_tit1">3***3</span>
+			</div>
+			<div class="goods_judge_content">
+				<span class="goods_judge_tit goods_judge_tit2">
+					好评,满意!
+				</span>
+				<button class="judge_btn">查看全部评价</button>
+			</div>
+		</div>
+		<img src="goods_pics/lazy.png" class="im_lazy">
+		<!-- 底部导航栏 -->
+		<div class="goods_particulars_nav">
+			<div class="goods_particulars_nav_icon">
+				<div class="goods_particulars_common_icon goods_particulars_common_icon1">
+				</div>
+				<span class="goods_particulars_nav_tit">客服</span>
+			</div>
+			<div class="goods_particulars_nav_icon">
+				<div class="goods_particulars_common_icon goods_particulars_common_icon2">
+				</div>
+				<span class="goods_particulars_nav_tit">店铺</span>
+			</div> 
+			<div class="goods_particulars_nav_icon">
+				<div class="goods_particulars_common_icon goods_particulars_common_icon3">
+				</div>
+				<span class="goods_particulars_nav_tit">收藏</span>
+			</div>  
+			<button class="goods_particulars_nav_btn" @click="add_shopping()">加入购物车</button>
+			<button class="goods_particulars_nav_btn goods_particulars_nav_btn1" @click="buy()">立即购买</button>
+		</div>
+		<!-- 尺寸规格 -->
+		<div class="choose_nav" v-show="choose" v-cloak>
+			<div class="choose_nav1">
+				<img src="goods_pics/02.gif" class="choose_nav_pic" />
+				<span class="choose_nav_tit" v-cloak>￥{{price}}</span>
+				<span class="choose_nav_tit choose_nav_tit1">库存300件</span>
+				<span class="choose_nav_tit choose_nav_tit1">选择颜色分类</span>
+				<div class="color_nav">
+					<span class="color_nav_tit">颜色分类</span>
+					<div class="color_nav_tit2" v-for="value in color" @click="choose($event)
+					" :style="{backgroundColor:activeColor1}" v-cloak>{{value}}</div>
+				</div>
+				<div class="color_nav">
+					<span class="color_nav_tit3">尺寸</span>
+					<div class="color_nav_tit2 color_nav_tit4" v-cloak>{{size}}</div>
+				</div>
+				<div class="color_nav">
+					<span class="color_nav_tit3">数量</span>
+					<div class="amount_nav">
+						<div class="amount_nav_add" @click='minus()'>－</div>
+						<div class="amount_nav_add amount_nav_amount" v-cloak>{{amount1}}</div>
+						<div class="amount_nav_add" @click="add()">＋</div>
+					</div>
+				</div>
+				<div class="sure_btn" @click="sure()">确定</div>
+			</div>
+		</div>
+			<div class="black" v-show = "pay_nav" v-cloak></div>
+			<div class="pay_nav" v-show = "pay_nav" v-cloak>
+				<span class="pay_nav_tit">您需要支付{{pay_money}}元，确认么？</span>
+				<button class="pay_sure_btn" @click=certain()>确认</button>
+				<button class="pay_sure_btn pay_sure_btn1" @click="cancle()">取消</button>
+			</div>
+			<div class="certain" v-show = "cert" v-cloak>支付成功</div>
+	</div>
+	<script src="vue.js"></script>
+	<script src="TB.js"></script>
+</body>
+</html>

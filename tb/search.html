@@ -1,0 +1,41 @@
+<!-- 搜索商品页面 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+	<title>Document</title>
+	<link rel="stylesheet" href="TB.css" />
+</head>
+<body>
+	<div class="search_moduel">
+		<span class="search_moduel_direction search_moduel_direction2" @click="back()">←</span>
+		<input type="text" class="msearch_moduel" v-model="search1" @keyup="search($event)" @keydown.down="changeDown()" @keydown.up.prevent="changeUp()"/>
+		<span class="search_moduel_direction search_moduel_direction1" @click="sure_search()">→</span>
+		<ul>
+			<li v-for="(value,index) in myData" v-cloak :class="{gray:index==now}" v-show="li_show">
+				{{value}}
+			</li>
+		</ul>
+		<!-- 当输入值为空时，显示 -->
+		<p v-show='search1.length==0' class="blank_s" v-cloak>请输入搜索内容</p>
+		<!-- 历史记录模块 -->
+		<div class="history_modeul" v-show="li_show==false || search1==''">
+			<p v-show="history.length!=0">历史搜索</p>
+			<button class="clear_all" v-show="history.length!=0" @click="clearAll()">清除全部</button>
+			<ul>
+				<li v-for="item in history" v-cloak>{{item}}</li>
+			</ul>
+			<div class="black black1" v-show="clear==true"></div>
+			<div class="pay_nav clear_history" v-show="clear" v-cloak>
+				<span class="pay_nav_tit">确定删除全部么？</span>
+				<button class="clear clear_sure" @click="certain()">确认</button>
+				<button class="clear clear_cancle" @click="cancle()">取消</button>
+			</div>
+		</div>
+	</div>
+	<script src="vue.js"></script>
+	<script src="vue-resource.js"></script>
+	<script src="TB.js"></script>
+</body>
+</html>

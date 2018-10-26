@@ -1,0 +1,27 @@
+<!-- 登录页 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+	<title>Document</title>
+	<link rel="stylesheet" href="TB.css" />
+</head>
+<body>
+	<div class="taobao_icon"></div>
+	<div class="tb_login">
+		<input type="text" class="count" placeholder="手机号/邮箱/会员名" v-model="username"/>
+		<input type="password" class="count" placeholder="请输入密码" v-model="password"/>
+		<div class="tb_el">
+			<span class="tb_el_tit" @click="regis()">免费注册</span>
+			<span class="tb_el_tit">忘记密码</span>
+		</div>
+		<div class="login_nav" @click="login()">登录</div>
+		<div class="login_nav login_nav1">短信验证码登录</div>
+		<!-- v-cloak解决页面刷新时闪现已隐藏部分   -->
+		<div class="login_fal" v-show="show" v-cloak>用户名或密码出现错误，请重新输入</div>
+	</div>
+	<script src="TB.js"></script>
+	<script src="vue.js"></script>
+</body>
+</html>
